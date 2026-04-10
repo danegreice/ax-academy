@@ -1,0 +1,9 @@
+gspread
+google-auth
+python-dotenv
+botcity-framework-web
+botcity-framework-core
+webdriver-browser
+webdriver-manager
+selenium
+botcity-maestro-sdk
