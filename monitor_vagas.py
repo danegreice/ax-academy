@@ -15,17 +15,18 @@ load_dotenv()
 SERVER = os.getenv('MAESTRO_SERVER')
 LOGIN = os.getenv('MAESTRO_LOGIN')
 KEY = os.getenv('MAESTRO_KEY')
+USUARIO = os.getenv('USUARIO')
+SENHA = os.getenv('SENHA')
 
 def conectar_ao_maestro():
     if len(sys.argv) > 1:
         maestro = BotMaestroSDK.from_sys_args()
         task_id = maestro.get_execution().task_id
-        credentials = maestro.get_credential("daniele-login")
     else:
         maestro = BotMaestroSDK()
         maestro.login(server=SERVER, login=LOGIN, key=KEY)
         task_id = None
-    return maestro, task_id, credentials
+    return maestro, task_id
 
 def iniciar_bot():
     bot = WebBot()
@@ -39,11 +40,11 @@ def abrir_portal(bot, url_portal):
     url = str(url_portal).replace("\\", "/")
     bot.browse(url)
 
-def pegar_vagas(bot, dados, credentials):
+def pegar_vagas(bot, dados):
     resultados = []
     
-    bot.find_element(selector="cpf", by=By.ID).send_keys(credentials.LOGIN)
-    bot.find_element(selector="senha", by=By.ID).send_keys(credentials.SENHA)
+    bot.find_element(selector="cpf", by=By.ID).send_keys(LOGIN)
+    bot.find_element(selector="senha", by=By.ID).send_keys(SENHA)
     bot.find_element(selector= "/html/body/div[1]/div/div[2]/main/div/div/div/div/div[1]/div[5]/button[1]", by=By.XPATH).click()
 
     alunos = bot.find_elements(selector=".card-alunos", by= By.CSS_SELECTOR)

@@ -7,7 +7,7 @@ from recuperar_planilha import conectar_sheets, ler_planilha
 from enviar_telegram import formatar_msg, enviar_telegram
 
 def main():
-    maestro, task_id, credentials = conectar_ao_maestro()
+    maestro, task_id = conectar_ao_maestro()
     bot = iniciar_bot()
     try:
         abrir_portal(bot, 'https://reserva.matriculas.am.gov.br/login')
@@ -16,7 +16,7 @@ def main():
         aba = conectar_sheets()
         dados = ler_planilha(aba)
 
-        resultados = pegar_vagas(bot, dados[0], credentials)
+        resultados = pegar_vagas(bot, dados[0])
 
         vagas = [
             r for r in resultados
