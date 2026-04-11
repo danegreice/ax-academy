@@ -43,7 +43,7 @@ def abrir_portal(bot, url_portal):
 def pegar_vagas(bot, dados):
     resultados = []
     
-    bot.find_element(selector="cpf", by=By.ID).send_keys(LOGIN)
+    bot.find_element(selector="cpf", by=By.ID).send_keys(USUARIO)
     bot.find_element(selector="senha", by=By.ID).send_keys(SENHA)
     bot.find_element(selector= "/html/body/div[1]/div/div[2]/main/div/div/div/div/div[1]/div[5]/button[1]", by=By.XPATH).click()
 
