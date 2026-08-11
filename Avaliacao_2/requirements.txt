@@ -1,0 +1,9 @@
+playwright
+pymupdf
+pydantic
+openpyxl
+python-dotenv
+Pillow
+opencv-python
+pytesseract
+unidecode
